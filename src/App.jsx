@@ -68,6 +68,7 @@ const App = () => {
                         latitude: p[6],
                         altitude: p[7],
                         velocity: p[9],
+                        heading: p[10],
                     }));
 
                 setPlanes(formattedPlanes);
@@ -98,7 +99,7 @@ const App = () => {
                 <Marker
                     key={plane.icao24}
                     position={[plane.latitude, plane.longitude]}
-                    icon={createRotatedIcon(plane?.true_track)}
+                    icon={createRotatedIcon(plane.heading)}
                 >
                     <Popup>
                         <strong>{plane.callsign}</strong><br />
