@@ -99,7 +99,7 @@ const App = () => {
             />
 
 
-            <MarkerClusterGroup>
+            <MarkerClusterGroup chunkedLoading>
                 {planes.map((plane) => (
                     <Marker
                         key={plane.icao24}
