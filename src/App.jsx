@@ -81,15 +81,15 @@ const App = () => {
         const interval = setInterval(fetchPlanes, 30000); // обновление каждые 10 сек
         return () => clearInterval(interval);
     }, []);
-    const route = [
-        [plane.departure_airport.lat, plane.departure_airport.lon],
-        [plane.arrival_airport.lat, plane.arrival_airport.lon],
-    ];
+        const route = [
+            [plane.departure_airport.lat, plane.departure_airport.lon],
+            [plane.arrival_airport.lat, plane.arrival_airport.lon],
+        ];
     return (
         <MapContainer  center={[50, 10]} zoom={5} style={{ height: '100vh', width: '100%', background: 'black' }}>
 
 
-            <Polyline positions={route} color="gray" weight={2} dashArray="1" />
+            {/*<Polyline positions={route} color="gray" weight={2} dashArray="1" />*/}
             <TileLayer
                 url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
                 attribution='&copy; <a href="https://carto.com/">CartoDB</a>'
