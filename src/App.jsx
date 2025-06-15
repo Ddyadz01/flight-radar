@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {MapContainer, TileLayer, Marker, Popup, Polyline} from 'react-leaflet';
+import MarkerClusterGroup from "react-leaflet-cluster";
+
 import axios from 'axios';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -93,22 +95,27 @@ const App = () => {
             {/*<Polyline positions={route} color="gray" weight={2} dashArray="1" />*/}
             <TileLayer
                 url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-                attribution='&copy; <a href="https://carto.com/">CartoDB</a>'
+                attribution='&copy; <a href="https://carto.com/">CARTO</a>'
             />
-            {planes.map((plane) => (
-                <Marker
-                    key={plane.icao24}
-                    position={[plane.latitude, plane.longitude]}
-                    icon={createRotatedIcon(plane.heading)}
-                >
-                    <Popup>
-                        <strong>{plane.callsign}</strong><br />
-                        Страна: {plane.origin_country}<br />
-                        Высота: {plane.altitude?.toFixed(0)} м<br />
-                        Скорость: {plane.velocity?.toFixed(0)} м/с
-                    </Popup>
-                </Marker>
-            ))}
+
+
+            <MarkerClusterGroup>
+                {planes.map((plane) => (
+                    <Marker
+                        key={plane.icao24}
+                        position={[plane.latitude, plane.longitude]}
+                        icon={createRotatedIcon(plane.heading)}
+                    >
+                        <Popup>
+                            <strong>{plane.callsign}</strong><br />
+                            Страна: {plane.origin_country}<br />
+                            Высота: {plane.altitude?.toFixed(0)} м<br />
+                            Скорость: {plane.velocity?.toFixed(0)} м/с
+                        </Popup>
+                    </Marker>
+                ))}
+            </MarkerClusterGroup>
+
 
         </MapContainer>
     );
