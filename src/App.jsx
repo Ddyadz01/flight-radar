@@ -98,7 +98,7 @@ const App = () => {
                 <Marker
                     key={plane.icao24}
                     position={[plane.latitude, plane.longitude]}
-                    icon={createRotatedIcon(plane.heading)}
+                    icon={createRotatedIcon(plane?.true_track)}
                 >
                     <Popup>
                         <strong>{plane.callsign}</strong><br />
